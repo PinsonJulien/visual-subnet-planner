@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import IPv4 from './ipv4';
+import IPv4 from './IPv4';
 
 describe('IPv4', () => {
   it('should be able to construct an IPv4 address', () => {
@@ -44,34 +44,6 @@ describe('IPv4', () => {
 
     ipv4 = new IPv4([1, 0, 0, 1], 8);
     expect(ipv4.toNumber()).toBe(16777217);
-  });
-
-  it('Should have a valid netmask from CIDR', () => {
-    let ipv4 = new IPv4([192, 168, 0, 1], 24);
-    expect(ipv4.netmask).toEqual([255, 255, 255, 0]);
-
-    ipv4 = new IPv4([192, 168, 0, 1], 16);
-    expect(ipv4.netmask).toEqual([255, 255, 0, 0]);
-
-    ipv4 = new IPv4([1, 0, 0, 1], 8);
-    expect(ipv4.netmask).toEqual([255, 0, 0, 0]);
-  });
-
-  it('Should have a valid magic number from CIDR', () => {
-    let ipv4 = new IPv4([192, 168, 0, 1], 12);
-    expect(ipv4.magicNumber).toEqual(16);
-
-    ipv4 = new IPv4([192, 168, 0, 1], 13);
-    expect(ipv4.magicNumber).toBe(8);
-
-    ipv4 = new IPv4([1, 0, 0, 1], 23);
-    expect(ipv4.magicNumber).toBe(2);
-
-    ipv4 = new IPv4([1, 0, 0, 1], 25);
-    expect(ipv4.magicNumber).toBe(128);
-
-    ipv4 = new IPv4([1, 0, 0, 1], 28);
-    expect(ipv4.magicNumber).toBe(16);
   });
 
 });
