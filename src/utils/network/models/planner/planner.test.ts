@@ -36,9 +36,9 @@ describe('Planner', () => {
     expect(subnet.machines).toBe(10);
     expect(subnet.broadcast.toString()).toBe('10.24.2.143');
     expect(subnet.nextSubnetNetwork.toString()).toBe('10.24.2.144');
-    subnet = planner.subnets[5];
-    expect(subnet.machines).toBe(0);
-    expect(subnet.network.toString()).toBe('10.24.2.144');
+
+    expect(planner.lastNetwork.toString()).toBe('10.24.2.144');
+
 
   });
 

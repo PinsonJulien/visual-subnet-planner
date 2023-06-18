@@ -5,6 +5,7 @@ export default class Planner {
   private _ip: IPv4;
   private _machines: number[];
   private _subnets: Subnet[];
+  private _lastNetwork: IPv4;
 
   constructor(ip: IPv4, machines: number[]) {
     this.ip = ip;
@@ -37,6 +38,10 @@ export default class Planner {
     this._subnets = subnets;
   }
 
+  public get lastNetwork(): IPv4 {
+    return this._lastNetwork;
+  }
+
   public calculate(): void {
     const subnets = [];
     const machines = this.machines;
@@ -52,7 +57,7 @@ export default class Planner {
     }
     
     // Add the last subnet to keep the next network ip.
-    subnets.push(new Subnet(ip, 0));
+    this._lastNetwork = ip;
 
     this.subnets = subnets;
   }
