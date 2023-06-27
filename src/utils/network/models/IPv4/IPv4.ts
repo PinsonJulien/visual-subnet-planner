@@ -36,7 +36,7 @@ export default class IPv4 {
   }
 
   public toString(): string {
-    return this._values.join('.');
+    return this.values.join('.');
   }
 
   public toStringWithCIDR(): string {
@@ -44,7 +44,7 @@ export default class IPv4 {
   }
 
   public toNumber(): number {
-    return this._values.reduce((prev, curr, index) => {
+    return this.values.reduce((prev, curr, index) => {
       return prev + curr * Math.pow(256, 3 - index);
     }, 0);
   }

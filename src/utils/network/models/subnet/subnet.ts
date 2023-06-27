@@ -117,5 +117,5 @@ export default class Subnet {
     // calculate the last possible address of the subnet.
     const lastAddress = this.nextSubnetNetwork.toNumber() - 1;
     this.broadcast = IPv4.fromNumber(lastAddress);
-  }  
+  } 
 }
